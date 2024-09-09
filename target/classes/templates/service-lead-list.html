@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Service Leads</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+    <h2>Service Leads</h2>
+    <a th:href="@{/service-lead/add}">Add Service Lead</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Contact Name</th>
+                <th>Company Name</th>
+                <th>Mobile No</th>
+                <th>Product Name</th>
+                <th>Remarks</th>
+                <th>Problem</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="lead : ${serviceLeads}">
+                <td th:text="${lead.contactName}">Contact Name</td>
+                <td th:text="${lead.companyName}">Company Name</td>
+                <td th:text="${lead.mobileNo}">Mobile No</td>
+                <td th:text="${lead.productName}">Product Name</td>
+                <td th:text="${lead.remarks}">remarks</td>
+                <td th:text="${lead.problem}">problem</td>
+                <td th:text="${lead.status}">Status</td>
+                <td>
+                    <a th:href="@{/service-lead/edit/{id}(id=${lead.id})}">Edit</a>
+                    <a th:href="@{/service-lead/delete/{id}(id=${lead.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

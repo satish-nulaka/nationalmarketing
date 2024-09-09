@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Sales Lead</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+    <h2>Add Sales Lead</h2>
+    <form th:action="@{/sales-lead/add}" th:object="${salesLead}" method="post">
+        <div>
+            <label for="personName">Person Name:</label>
+            <input type="text" id="personName" th:field="*{personName}" required>
+        </div>
+        <div>
+            <label for="mobileNo">Mobile No:</label>
+            <input type="text" id="mobileNo" th:field="*{mobileNo}" required>
+        </div>
+        <div>
+            <label for="emailId">Email Id:</label>
+            <input type="email" id="emailId" th:field="*{emailId}" required>
+        </div>
+        <div>
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" th:field="*{productName}" required>
+        </div>
+        <div>
+            <label for="remarks">Remarks:</label>
+            <textarea id="remarks" th:field="*{remarks}" required></textarea>
+        </div>
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" th:field="*{status}">
+                <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}">Status</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Add Sales Lead</button>
+        </div>
+    </form>
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

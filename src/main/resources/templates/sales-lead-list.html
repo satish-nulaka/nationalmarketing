@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sales Leads</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+    <h2>Sales Leads</h2>
+    <a th:href="@{/sales-lead/add}">Add Sales Lead</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Person Name</th>
+                <th>Mobile No</th>
+                <th>Email Id</th>
+                <th>Product Name</th>
+                <th>Remarks</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="lead : ${salesLeads}">
+                <td th:text="${lead.personName}">Person Name</td>
+                <td th:text="${lead.mobileNo}">Mobile No</td>
+                <td th:text="${lead.emailId}">Email Id</td>
+                <td th:text="${lead.productName}">Product Name</td>
+                <td th:text="${lead.remarks}">Remarks</td>
+                <td th:text="${lead.status}">Status</td>
+                <td>
+                    <a th:href="@{/sales-lead/edit/{id}(id=${lead.id})}">Edit</a>
+                    <a th:href="@{/sales-lead/delete/{id}(id=${lead.id})}">Delete</a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

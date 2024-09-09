@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h2>Home Page</h2>
+    <nav>
+        <ul>
+            <li><a th:href="@{/sales-lead/add}">Sales Lead</a></li>
+            <li><a th:href="@{/service-lead/add}">Service Lead</a></li>
+            <li><a th:href="@{/reports}">Reports</a>
+                <ul>
+                    <li><a th:href="@{/reports/edit/sales}">Edit Sales Report</a></li>
+                    <li><a th:href="@{/reports/edit/service}">Edit Service Report</a></li>
+                    <li><a th:href="@{/reports/filters}">Report with Filters</a></li>
+                </ul>
+            </li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

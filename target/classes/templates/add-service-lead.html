@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Service Lead</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+    <h2>Add Service Lead</h2>
+    <form th:action="@{/service-lead/add}" th:object="${serviceLead}" method="post">
+        <div>
+            <label for="contactName">Contact Name:</label>
+            <input type="text" id="contactName" th:field="*{contactName}" required>
+        </div>
+        <div>
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" th:field="*{companyName}" required>
+        </div>
+        <div>
+            <label for="mobileNo">Mobile No:</label>
+            <input type="text" id="mobileNo" th:field="*{mobileNo}" required>
+        </div>
+        <div>
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" th:field="*{productName}" required>
+        </div>
+        <div>
+            <label for="remarks">Remarks:</label>
+            <textarea id="remarks" th:field="*{remarks}" required></textarea>
+        </div>
+        <div>
+            <label for="problem">problem:</label>
+            <textarea id="problem" th:field="*{problem}" required></textarea>
+        </div>
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" th:field="*{status}">
+                <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}">Status</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Add Service Lead</button>
+        </div>
+    </form>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
